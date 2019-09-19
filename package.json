@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "DEBUG=app node app.js"
+    "start": "DEBUG=app node app.js",
+    "lint": "eslint app.js"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +19,8 @@
     "morgan": "^1.9.1"
   },
   "devDependencies": {
-    "eslint": "^6.4.0"
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2"
   }
 }
