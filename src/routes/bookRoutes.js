@@ -1,7 +1,6 @@
 const express = require('express');
-const bookRouter = express.Router();
 
-const sql = require('mssql');
+const bookRouter = express.Router();
 
 function router(nav) {
   const books = [
