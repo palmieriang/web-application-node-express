@@ -7,7 +7,7 @@ const bookRouter = express.Router();
 function router(nav) {
   bookRouter.route('/')
     .get((req, res) => {
-      const url = 'mongodb://localhost:27017';
+      const url = 'mongodb+srv://MongoDBUser:3MBrbXyHzpsqEA3@gettingstarted-1dljq.azure.mongodb.net/libraryApp?retryWrites=true&w=majority';
       const dbName = 'libraryApp';
 
       (async function mongo() {
@@ -36,7 +36,7 @@ function router(nav) {
   bookRouter.route('/:id')
     .get((req, res) => {
       const { id } = req.params;
-      const url = 'mongodb://localhost:27017';
+      const url = 'mongodb+srv://MongoDBUser:3MBrbXyHzpsqEA3@gettingstarted-1dljq.azure.mongodb.net/libraryApp?retryWrites=true&w=majority';
       const dbName = 'libraryApp';
 
       (async function mongo() {

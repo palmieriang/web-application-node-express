@@ -69,13 +69,13 @@ const books = [
 function router(nav) {
   adminRouter.route('/')
     .get((req, res) => {
-      const url = 'mongodb://localhost:27017';
+      const url = 'mongodb+srv://MongoDBUser:3MBrbXyHzpsqEA3@gettingstarted-1dljq.azure.mongodb.net/libraryApp?retryWrites=true&w=majority';
       const dbName = 'libraryApp';
 
       (async function mongo() {
         let client;
         try {
-          client = await MongoClient.connect(url);
+          client = await MongoClient.connect(url, { useUnifiedTopology: true, useNewUrlParser: true });
           debug('Connected correctly to server');
 
           const db = client.db(dbName);
