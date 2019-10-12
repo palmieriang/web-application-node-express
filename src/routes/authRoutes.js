@@ -17,13 +17,16 @@ function router(nav) {
       (async function addUser() {
         let client;
         try {
-          client = await MongoClient.connect(url);
+          client = await MongoClient.connect(url, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+          });
           debug('Connected correctly to the server');
           const db = client.db(dbName);
           const col = db.collection('users');
           const user = { username, password };
           const results = await col.insertOne(user);
-          debug(results);
+          debug(results); // to see user in command line, run show dbs than db.users.find()
           req.login(results.ops[0], () => {
             res.redirect('/auth/profile');
           });
