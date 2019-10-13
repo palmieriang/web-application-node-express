@@ -15,15 +15,17 @@ module.exports = function localStrategy() {
       (async function mongo() {
         let client;
         try {
-          client = await MongoClient.connect(url);
+          client = await MongoClient.connect(url, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+          });
           debug('Connected correctly to server');
 
           const db = client.db(dbName);
-          const col = await db.collection('users');
+          const col = db.collection('users');
 
           const user = await col.findOne({ username });
-
-          if (user.password === password) {
+          if (user && user.password === password) {
             done(null, user);
           } else {
             done(null, false);
@@ -33,10 +35,6 @@ module.exports = function localStrategy() {
         }
         client.close();
       }());
-      const user = {
-        username, password
-      };
-      done(null, user);
     }
   ));
 };
