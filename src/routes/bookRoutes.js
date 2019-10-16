@@ -8,7 +8,7 @@ function router(nav) {
   bookRouter.use(middleware);
   bookRouter.route('/')
     .get(getIndex);
-  
+
   bookRouter.route('/:id')
     .get(getById);
 
